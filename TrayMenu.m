@@ -86,27 +86,8 @@
 }
 
 - (void) applicationDidFinishLaunching:(NSNotification *)notification {
-	NSMenu *menu = [self createMenu];
 	
-    // Check if Darkmode menubar is supported and enable templating of the icon in that case.
-    NSImage *icon = [NSImage imageNamed:@"mouse"];
-    [icon setSize:CGSizeMake(19, 19)];
     
-    BOOL oldBusted = (floor(NSAppKitVersionNumber) <= NSAppKitVersionNumber10_9);
-    if (!oldBusted)
-    {
-        // 10.10 or higher, so setTemplate: is safe
-        [icon setTemplate:YES];
-    }
-    
-	_statusItem = [[[NSStatusBar systemStatusBar]
-                        statusItemWithLength:NSSquareStatusItemLength] retain];
-    _statusItem.highlightMode = YES;
-    _statusItem.menu = menu;
-    _statusItem.button.toolTip = @"MiddleClick";
-    _statusItem.button.image = icon;
-	
-	[menu release];
 }
 
 @end
